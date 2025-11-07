@@ -1,12 +1,12 @@
 {
   "response": [
     {
-      "datetime": "N/A",
-      "filename": "N/A",
-      "id": "N/A",
-      "romtype": "N/A",
-      "size": "N/A",
-      "url": "N/A",
+      "datetime": "1762311977000",
+      "filename": "lineage-23.0-20251105-UNOFFICIAL-z3s.zip",
+      "id": "e341d4ce765b61eda97b79fb7708285376516c4fde0cb4c385fec6fa7f299bda",
+      "romtype": "UNOFFICIAL",
+      "size": "1124730006",
+      "url": "https://github.com/Android-Artisan/LineageOS/releases/download/V2.0.1/lineage-23.0-20251105-UNOFFICIAL-z3s.zip",
       "version": "23.0"
     }
   ]
