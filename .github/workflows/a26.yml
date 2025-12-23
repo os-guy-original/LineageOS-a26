@@ -1,4 +1,4 @@
-name: ArtisanROM-S20
+name: bady333-A26
 
 on:
   workflow_dispatch:
@@ -16,38 +16,38 @@ jobs:
           sudo apt upgrade -y
           sudo apt -y install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick protobuf-compiler python3-protobuf lib32readline-dev lib32z1-dev libdw-dev libelf-dev lz4 libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 
-      - name: Initialize the ArtisanROM source repository
+      - name: Initialize the bady333 source repository
         run: |
-          cd ~/ArtisanROM/Lineage
-          repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ArtisanROM/android -b lineage-23.0
+          cd ~/bady333/Lineage
+          repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/LineageOS/android.git -b lineage-23.0
 
       - name: Prepare the device-specific code
         run: |
-          cd ~/ArtisanROM/Lineage
+          cd ~/bady333/Lineage
           mkdir -p .repo/local_manifests
-          curl -o .repo/local_manifests/roomservice.xml https://raw.githubusercontent.com/Android-Artisan/LineageOS/refs/heads/main/manifest/roomservice-S20x.xml
+          curl -o .repo/local_manifests/roomservice.xml https://raw.githubusercontent.com/bady333/LineageOS-a26/refs/heads/main/manifest/roomservice-a266b.xml
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
           source build/envsetup.sh
       
       - name: Configure git
         run: |
-          git config --global user.email romartisan2025@gmail.com
-          git config --global user.name Android-Artisan
+          git config --global user.email bad.workapi@gmail.com
+          git config --global user.name bady333
       
-      - name: Build ArtisanROM
+      - name: Build bady333
         run: |
-          cd ~/ArtisanROM/Lineage
+          cd ~/bady333/Lineage
           source build/envsetup.sh
-          brunch x1s
+          brunch a26
 
-      - name: Upload ArtisanROM to GitHub Nightly Releases
+      - name: Upload bady333 to GitHub Nightly Releases
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            /home/artisan/ArtisanROM/Lineage/out/target/product/x1s/recovery.img
-            /home/artisan/ArtisanROM/Lineage/out/target/product/x1s/lineage-23.0-*-UNOFFICIAL-x1s.zip
-          name: ArtisanROM-nightly-S20-${{ github.run_id }}
+            /home/artisan/bady333/Lineage/out/target/product/a26/recovery.img
+            /home/artisan/bady333/Lineage/out/target/product/a26/lineage-23.0-*-UNOFFICIAL-a26.zip
+          name: bady333-nightly-a26-${{ github.run_id }}
           tag_name: ${{ github.run_id }}
-          body: ArtisanROM-Nightly-S20
+          body: bady333-Nightly-A26
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,29 +1,10 @@
-# 📱 LineageOS for Samsung Galaxy S20 Series SM-G98x(F/B)
+# 📱 LineageOS for Samsung A26 SM266B
 
 ### ✅ Supported Devices
 
 | Device Name       | Codename | Chipset    | Status               |
 |-------------------|----------|------------|----------------------|
-| Galaxy S20        | x1s      | Exynos     | [![LineageOS-x1s-WSL](https://github.com/Android-Artisan/LineageOS/actions/workflows/x1s-wsl.yml/badge.svg?event=workflow_dispatch)](https://github.com/Android-Artisan/LineageOS/actions/workflows/x1s-wsl.yml) |
-| Galaxy S20+       | y2s      | Exynos     | [![LineageOS-y2s-WSL](https://github.com/Android-Artisan/LineageOS/actions/workflows/y2s-wsl.yml/badge.svg?event=workflow_dispatch)](https://github.com/Android-Artisan/LineageOS/actions/workflows/y2s-wsl.yml) |
-| Galaxy S20 Ultra  | z3s      | Exynos     | [![LineageOS-z3s-WSL](https://github.com/Android-Artisan/LineageOS/actions/workflows/z3s-wsl.yml/badge.svg?event=workflow_dispatch)](https://github.com/Android-Artisan/LineageOS/actions/workflows/z3s-wsl.yml) |
-
-
-### 🛠️ Status
-
-| Component           | Status                   |
-|---------------------|--------------------------|
-| Boots               | ✅ Yes                   |
-| Wi-Fi               | ✅ Working               |
-| RIL (Calls, SMS)    | ✅ Working               |
-| Mobile Data         | ✅ Working               |
-| Audio               | ✅ Working               |
-| Bluetooth           | ✅ Working               |
-| NFC                 | ✅ Working               |
-| GPS                 | ✅ Working               |
-| Camera              | ✅ Working               |
-| Fingerprint         | ✅ Working               |
-| VoLTE / VoWiFi      | ❌ Not Working           |
+| Galaxy S20        | x1s      | Exynos     | [![LineageOS-A26](https://github.com/bady333/LineageOS-a26/actions/workflows/a26.yml/badge.svg?event=workflow_dispatch)](https://github.com/bady333/LineageOS-a26/actions/workflows/a26.yml) |
 
 ### 📦 Sources
 
