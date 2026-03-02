@@ -1,0 +1,30 @@
+name: Crave Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Crave CLI
+        run: |
+          curl -s https://raw.githubusercontent.com/accupara/crave/master/get_crave.sh | bash -s --
+          sudo mv crave /usr/local/bin/
+
+      - name: Configure Crave
+        env:
+          CRAVE_TOKEN: ${{ secrets.CRAVE_TOKEN }}
+        run: |
+          crave configure --token "$CRAVE_TOKEN"
+
+      - name: Push build to Crave
+        run: |
+          crave push --no-local
+
