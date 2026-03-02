@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
+    env:
+      CRAVE_TOKEN: ${{ secrets.CRAVE_TOKEN }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,12 +20,7 @@ jobs:
         run: |
           curl -s https://raw.githubusercontent.com/accupara/crave/master/get_crave.sh | bash -s --
           sudo mv crave /usr/local/bin/
-
-      - name: Configure Crave
-        env:
-          CRAVE_TOKEN: ${{ secrets.CRAVE_TOKEN }}
-        run: |
-          crave configure --token "$CRAVE_TOKEN"
+          crave version
 
       - name: Push build to Crave
         run: |
