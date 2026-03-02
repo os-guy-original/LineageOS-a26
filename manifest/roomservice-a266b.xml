@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-    <remote name="linux4" fetch="https://github.com/linux4-bringup-priv" revision="lineage-23.0" />
-    <remote name="exynos1380" fetch="https://github.com/bady333" revision="lineage-23.0" />
-    <remote name="device-exynos1380" fetch="https://gitlab.com/SavedByLight" revision="lineage-23.0" />
-    
-    <remote name="los" fetch="https://github.com/LineageOS" revision="lineage-23.0" />
+    <remote name="os-guy" fetch="https://github.com/os-guy-original" />
 
     <!-- device/ -->
         <!-- samsung/ -->
-        <project path="device/samsung/a26x" name="android_device_samsung_a26x" remote="exynos1380" />
-        
+        <project path="device/samsung/essi" name="android_device_samsung_essi" remote="os-guy" revision="main" />
+
     <!-- kernel/ -->
         <!-- samsung -->
-        <project path="kernel/samsung/a26x" name="android_kernel_samsung_a266b" remote="exynos1380" />
-  
+        <project path="kernel/samsung/a26x" name="android_kernel_samsung_a26x" remote="os-guy" revision="master" />
+
     <!-- vendor/ -->
         <!-- samsung/ -->
-        <project path="vendor/samsung/a26x" name="android_dump_samsung_a26x" remote="device-exynos1380" />
+        <project path="vendor/samsung/a26x" name="vendor_samsung_a26x" remote="os-guy" revision="main" />
 </manifest>

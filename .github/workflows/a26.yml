@@ -1,4 +1,4 @@
-name: bady333-A26
+name: os-guy-A26
 
 on:
   workflow_dispatch:
@@ -16,38 +16,38 @@ jobs:
           sudo apt upgrade -y
           sudo apt -y install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick protobuf-compiler python3-protobuf lib32readline-dev lib32z1-dev libdw-dev libelf-dev lz4 libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev
 
-      - name: Initialize the bady333 source repository
+      - name: Initialize the os-guy-A26 source repository
         run: |
-          cd ~/bady333/Lineage
+          cd ~/os-guy-A26/Lineage
           repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/LineageOS/android.git -b lineage-23.0
 
       - name: Prepare the device-specific code
         run: |
-          cd ~/bady333/Lineage
+          cd ~/os-guy-A26/Lineage
           mkdir -p .repo/local_manifests
-          curl -o .repo/local_manifests/roomservice.xml https://raw.githubusercontent.com/bady333/LineageOS-a26/refs/heads/main/manifest/roomservice-a266b.xml
+          curl -o .repo/local_manifests/roomservice.xml https://raw.githubusercontent.com/os-guy-original/LineageOS-a26/main/manifest/roomservice-a266b.xml
           repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
           source build/envsetup.sh
       
       - name: Configure git
         run: |
-          git config --global user.email bad.workapi@gmail.com
-          git config --global user.name bady333
+          git config --global user.email 228935929+os-guy-original@users.noreply.github.com
+          git config --global user.name os-guy-original
       
-      - name: Build bady333
+      - name: Build os-guy-A26
         run: |
-          cd ~/bady333/Lineage
+          cd ~/os-guy-A26/Lineage
           source build/envsetup.sh
-          brunch a26
+          brunch essi
 
-      - name: Upload bady333 to GitHub Nightly Releases
+      - name: Upload os-guy-A26 to GitHub Nightly Releases
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            /home/artisan/bady333/Lineage/out/target/product/a26/recovery.img
-            /home/artisan/bady333/Lineage/out/target/product/a26/lineage-23.0-*-UNOFFICIAL-a26.zip
-          name: bady333-nightly-a26-${{ github.run_id }}
+            ~/os-guy-A26/Lineage/out/target/product/essi/recovery.img
+            ~/os-guy-A26/Lineage/out/target/product/essi/lineage-23.0-*-UNOFFICIAL-essi.zip
+          name: os-guy-A26-nightly-essi-${{ github.run_id }}
           tag_name: ${{ github.run_id }}
-          body: bady333-Nightly-A26
+          body: os-guy-A26-Nightly-essi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
