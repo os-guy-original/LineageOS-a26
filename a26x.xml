@@ -4,13 +4,13 @@
 
     <!-- device/ -->
         <!-- samsung/ -->
-        <project path="device/samsung/essi" name="android_device_samsung_essi" remote="os-guy" revision="main" />
+        <project path="device/samsung/essi" name="android_device_samsung_essi" remote="os-guy" revision="main" depth="1" />
 
     <!-- kernel/ -->
         <!-- samsung -->
-        <project path="kernel/samsung/a26x" name="android_kernel_samsung_a26x" remote="os-guy" revision="master" />
+        <project path="kernel/samsung/a26x" name="android_kernel_samsung_a26x" remote="os-guy" revision="master" depth="1" />
 
     <!-- vendor/ -->
         <!-- samsung/ -->
-        <project path="vendor/samsung/a26x" name="vendor_samsung_a26x" remote="os-guy" revision="main" />
+        <project path="vendor/samsung/a26x" name="vendor_samsung_a26x" remote="os-guy" revision="main" depth="1" />
 </manifest>
