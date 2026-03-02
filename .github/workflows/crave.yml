@@ -18,11 +18,13 @@ jobs:
 
       - name: Setup Crave CLI
         run: |
-          curl -s https://raw.githubusercontent.com/accupara/crave/master/get_crave.sh | bash -s --
-          sudo mv crave /usr/local/bin/
-          crave version
+          mkdir -p ~/.bin
+          curl -s https://raw.githubusercontent.com/accupara/crave/master/get_crave.sh | bash
+          echo "$HOME/.bin" >> $GITHUB_PATH
+
+      - name: Verify Crave
+        run: crave version
 
       - name: Push build to Crave
-        run: |
-          crave push --no-local
+        run: crave push --no-local
 
