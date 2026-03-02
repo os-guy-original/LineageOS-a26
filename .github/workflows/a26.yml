@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: UbuntuWSL-16GB-8C-2048GB
+    runs-on: ubuntu-24.04
     steps:
       - name: Install the build packages
         run: |
