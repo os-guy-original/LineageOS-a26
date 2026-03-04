@@ -4,7 +4,7 @@
 
     <!-- device/ -->
         <!-- samsung/ -->
-        <project path="device/samsung/essi" name="android_device_samsung_essi" remote="os-guy" revision="main" depth="1" />
+        <project path="device/samsung/a26x" name="android_device_samsung_a26x" remote="os-guy" revision="main" depth="1" />
 
     <!-- kernel/ -->
         <!-- samsung -->
