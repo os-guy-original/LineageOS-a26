@@ -12,5 +12,5 @@
 
     <!-- vendor/ -->
         <!-- samsung/ -->
-        <project path="vendor/samsung/a26x" name="vendor_samsung_a26x" remote="os-guy" revision="main" depth="1" />
+        <project path="vendor/samsung/a26x" name="android_vendor_samsung_a26x" remote="os-guy" revision="main" depth="1" />
 </manifest>
