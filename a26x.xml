@@ -8,7 +8,6 @@
   -->
 
   <!-- Remotes -->
-  <remote name="github" fetch="https://github.com" />
   <remote name="os-guy" fetch="https://github.com/os-guy-original" />
 
   <!-- ==================== Device ==================== -->
@@ -40,7 +39,6 @@
            revision="lineage-22.2" />
 
   <!-- Samsung SLSI Config (headers, configs for Exynos) -->
-  <!-- Note: Does not export soong_namespace, but contains needed headers -->
   <project path="hardware/samsung_slsi-linaro/config" 
            name="LineageOS/android_hardware_samsung_slsi-linaro_config" 
            remote="github" 
