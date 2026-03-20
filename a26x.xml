@@ -16,5 +16,6 @@
   <!-- hardware/ -->
   <project path="hardware/samsung" name="android_hardware_samsung" remote="lineageos" revision="lineage-22.2" depth="1" />
   <project path="hardware/samsung_slsi-linaro/config" name="android_hardware_samsung_slsi-linaro_config" remote="lineageos" revision="lineage-22.2" depth="1" />
+  <project path="hardware/lineage/interfaces" name="android_hardware_lineage_interfaces" remote="lineageos" revision="lineage-22.2" depth="1" />
 
 </manifest>
