@@ -5,6 +5,9 @@
     Device Manifest for Samsung Galaxy A26 (SM-A266B)
     Codename: a26x
     Platform: Exynos S5E8835
+    
+    Note: Only includes projects NOT in the default LineageOS manifest.
+    hardware/samsung, hardware/samsung_slsi-linaro/config are already included.
   -->
 
   <!-- Remotes -->
@@ -29,19 +32,5 @@
            name="android_vendor_samsung_a26x" 
            remote="os-guy" 
            revision="main" />
-
-  <!-- ==================== Hardware ==================== -->
-
-  <!-- Samsung Hardware HALs -->
-  <project path="hardware/samsung" 
-           name="LineageOS/android_hardware_samsung" 
-           remote="github" 
-           revision="lineage-22.2" />
-
-  <!-- Samsung SLSI Config (headers, configs for Exynos) -->
-  <project path="hardware/samsung_slsi-linaro/config" 
-           name="LineageOS/android_hardware_samsung_slsi-linaro_config" 
-           remote="github" 
-           revision="lineage-22.2" />
 
 </manifest>
