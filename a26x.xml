@@ -1,21 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
+  <!--
+    Device Manifest for Samsung Galaxy A26 (SM-A266B)
+    Codename: a26x
+    Platform: Exynos S5E8835
+  -->
+
+  <!-- Remotes -->
+  <remote name="github" fetch="https://github.com" />
   <remote name="os-guy" fetch="https://github.com/os-guy-original" />
-  <remote name="lineageos" fetch="https://github.com/LineageOS" />
 
-  <!-- device/ -->
-  <project path="device/samsung/a26x" name="android_device_samsung_a26x" remote="os-guy" revision="main" depth="1" />
+  <!-- ==================== Device ==================== -->
 
-  <!-- kernel/ -->
-  <project path="kernel/samsung/a26x" name="android_kernel_samsung_a26x" remote="os-guy" revision="master" depth="1" />
+  <!-- Device Tree -->
+  <project path="device/samsung/a26x" 
+           name="android_device_samsung_a26x" 
+           remote="os-guy" 
+           revision="main" />
 
-  <!-- vendor/ -->
-  <project path="vendor/samsung/a26x" name="android_vendor_samsung_a26x" remote="os-guy" revision="main" depth="1" />
+  <!-- Kernel Source -->
+  <project path="kernel/samsung/a26x" 
+           name="android_kernel_samsung_a26x" 
+           remote="os-guy" 
+           revision="master" />
 
-  <!-- hardware/ -->
-  <project path="hardware/samsung" name="android_hardware_samsung" remote="lineageos" revision="lineage-22.2" depth="1" />
-  <project path="hardware/samsung_slsi-linaro/config" name="android_hardware_samsung_slsi-linaro_config" remote="lineageos" revision="lineage-22.2" depth="1" />
-  <project path="hardware/lineage/interfaces" name="android_hardware_lineage_interfaces" remote="lineageos" revision="lineage-22.2" depth="1" />
+  <!-- Vendor Blobs -->
+  <project path="vendor/samsung/a26x" 
+           name="android_vendor_samsung_a26x" 
+           remote="os-guy" 
+           revision="main" />
+
+  <!-- ==================== Hardware ==================== -->
+
+  <!-- Samsung Hardware HALs -->
+  <project path="hardware/samsung" 
+           name="LineageOS/android_hardware_samsung" 
+           remote="github" 
+           revision="lineage-22.2" />
+
+  <!-- Samsung SLSI Config (headers, configs for Exynos) -->
+  <!-- Note: Does not export soong_namespace, but contains needed headers -->
+  <project path="hardware/samsung_slsi-linaro/config" 
+           name="LineageOS/android_hardware_samsung_slsi-linaro_config" 
+           remote="github" 
+           revision="lineage-22.2" />
+
+  <!-- Lineage Interfaces -->
+  <project path="hardware/lineage/interfaces" 
+           name="LineageOS/android_hardware_lineage_interfaces" 
+           remote="github" 
+           revision="lineage-22.2" />
 
 </manifest>
