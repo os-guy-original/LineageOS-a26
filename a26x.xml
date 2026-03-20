@@ -2,22 +2,19 @@
 <manifest>
 
   <remote name="os-guy" fetch="https://github.com/os-guy-original" />
+  <remote name="lineageos" fetch="https://github.com/LineageOS" />
 
   <!-- device/ -->
-  <!-- samsung/ -->
   <project path="device/samsung/a26x" name="android_device_samsung_a26x" remote="os-guy" revision="main" depth="1" />
 
   <!-- kernel/ -->
-  <!-- samsung/ -->
   <project path="kernel/samsung/a26x" name="android_kernel_samsung_a26x" remote="os-guy" revision="master" depth="1" />
 
   <!-- vendor/ -->
-  <!-- samsung/ -->
   <project path="vendor/samsung/a26x" name="android_vendor_samsung_a26x" remote="os-guy" revision="main" depth="1" />
 
   <!-- hardware/ -->
-  <!-- Required Soong namespace deps declared in device + vendor Android.bp -->
-  <project path="hardware/samsung" name="android_hardware_samsung" remote="github" revision="lineage-22.2" depth="1" />
-  <project path="hardware/samsung_slsi-linaro/config" name="android_hardware_samsung_slsi-linaro_config" remote="github" revision="lineage-22.2" depth="1" />
+  <project path="hardware/samsung" name="android_hardware_samsung" remote="lineageos" revision="lineage-22.2" depth="1" />
+  <project path="hardware/samsung_slsi-linaro/config" name="android_hardware_samsung_slsi-linaro_config" remote="lineageos" revision="lineage-22.2" depth="1" />
 
 </manifest>
