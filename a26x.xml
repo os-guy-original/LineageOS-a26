@@ -5,9 +5,6 @@
     Device Manifest for Samsung Galaxy A26 (SM-A266B)
     Codename: a26x
     Platform: Exynos S5E8835
-    
-    Note: Only includes projects NOT in the default LineageOS manifest.
-    hardware/samsung, hardware/samsung_slsi-linaro/config are already included.
   -->
 
   <!-- Remotes -->
@@ -20,12 +17,6 @@
            name="android_device_samsung_a26x" 
            remote="os-guy" 
            revision="main" />
-
-  <!-- Kernel Source -->
-  <project path="kernel/samsung/a26x" 
-           name="android_kernel_samsung_a26x" 
-           remote="os-guy" 
-           revision="master" />
 
   <!-- Vendor Blobs -->
   <project path="vendor/samsung/a26x" 
