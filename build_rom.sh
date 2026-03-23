@@ -48,8 +48,15 @@ if [ ! -f "build/envsetup.sh" ]; then
 fi
 source build/envsetup.sh
 
-echo -e "${BLUE}[3/4] Lunching target lineage_a26x-bp4a-userdebug...${NC}"
-lunch lineage_a26x-bp4a-userdebug
+echo -e "${BLUE}[3/4] Setting up device with breakfast a26x...${NC}"
+# Check if device tree exists before breakfast
+if [ ! -d "device/samsung/a26x" ]; then
+    echo -e "${RED}[ERROR] device/samsung/a26x not found! Manifest sync might have failed.${NC}"
+    echo -e "${BLUE}[INFO] Current device/ directory contents:${NC}"
+    ls -R device/ | grep ":$" || echo "device/ is empty"
+    exit 1
+fi
+breakfast a26x
 
 echo -e "${BLUE}[4/4] Starting compilation...${NC}"
 # Prevent historical broken vendor symlinks from crashing the build
