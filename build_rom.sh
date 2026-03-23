@@ -3,6 +3,11 @@
 # Automated Build Script for LineageOS 23.2 Custom ROM
 # Target: Samsung Galaxy A26 5G (a26x)
 # Maintainer: OpenSource Guy
+#
+# INSTRUCTIONS FOR CRAVE:
+# Run the following command in a fresh workspace to automatically
+# initialize, sync, and build the full ROM from scratch:
+#   crave run --no-patch -- "curl -s -L https://raw.githubusercontent.com/os-guy-original/LineageOS-a26/refs/heads/lineage-23.2/build_rom.sh -o build_rom.sh && bash build_rom.sh"
 # ==========================================================
 
 set -e
