@@ -48,8 +48,8 @@ if [ ! -f "build/envsetup.sh" ]; then
 fi
 source build/envsetup.sh
 
-echo -e "${BLUE}[3/4] Lunching target lineage_a26x-ap4a-userdebug...${NC}"
-lunch lineage_a26x-ap4a-userdebug
+echo -e "${BLUE}[3/4] Lunching target lineage_a26x-bp4a-userdebug...${NC}"
+lunch lineage_a26x-bp4a-userdebug
 
 echo -e "${BLUE}[4/4] Starting compilation...${NC}"
 # Prevent historical broken vendor symlinks from crashing the build
