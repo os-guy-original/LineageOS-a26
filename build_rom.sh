@@ -1,6 +1,6 @@
 #!/bin/bash
 # ==========================================================
-# Automated Build Script for LineageOS 22.1 Custom ROM
+# Automated Build Script for LineageOS 23.2 Custom ROM
 # Target: Samsung Galaxy A26 5G (a26x)
 # Maintainer: OpenSource Guy
 # ==========================================================
@@ -14,7 +14,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}==========================================================${NC}"
-echo -e "${GREEN} Starting LineageOS 22.1 Custom ROM Build for a26x${NC}"
+echo -e "${GREEN} Starting LineageOS 23.2 Custom ROM Build for a26x${NC}"
 echo -e "${GREEN} Maintainer: OpenSource Guy${NC}"
 echo -e "${BLUE}==========================================================${NC}"
 

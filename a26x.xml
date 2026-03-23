@@ -28,7 +28,7 @@
   <project path="hardware/samsung"
            name="android_hardware_samsung"
            remote="lineageos"
-           revision="lineage-22.1"
+           revision="lineage-23.2"
            depth="1" />
 
 </manifest>
