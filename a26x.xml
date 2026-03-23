@@ -21,7 +21,7 @@
   <project path="vendor/samsung/a26x"
            name="android_vendor_samsung_a26x"
            remote="os-guy"
-           revision="main"
+           revision="lineage-23.2"
            depth="1" />
 
   <!-- Hardware -->
