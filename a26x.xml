@@ -14,7 +14,7 @@
   <project path="device/samsung/a26x"
            name="android_device_samsung_a26x"
            remote="os-guy"
-           revision="main"
+           revision="lineage-23.2"
            depth="1" />
 
   <!-- Vendor Blobs -->
