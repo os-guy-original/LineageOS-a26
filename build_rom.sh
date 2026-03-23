@@ -46,17 +46,37 @@ if [ ! -f "build/envsetup.sh" ]; then
     echo -e "${RED}[ERROR] build/envsetup.sh not found. Ensure you are running this from the root of your LineageOS tree.${NC}"
     exit 1
 fi
-source build/envsetup.sh
 
-echo -e "${BLUE}[3/4] Setting up device with breakfast a26x...${NC}"
-# Check if device tree exists before breakfast
+# Explicitly use bash to source
+source build/envsetup.sh || { echo -e "${RED}[ERROR] Failed to source build/envsetup.sh${NC}"; exit 1; }
+
+# Debug: Check if Lineage core is present
+if [ ! -d "vendor/lineage" ]; then
+    echo -e "${RED}[ERROR] vendor/lineage not found! Core Lineage repositories are missing.${NC}"
+    echo -e "${BLUE}[INFO] Current vendor/ directory contents:${NC}"
+    ls -d vendor/*/ || echo "vendor/ is empty or missing subdirectories"
+    exit 1
+fi
+
+echo -e "${BLUE}[3/4] Initializing device configuration...${NC}"
+
+# Check if device tree exists
 if [ ! -d "device/samsung/a26x" ]; then
     echo -e "${RED}[ERROR] device/samsung/a26x not found! Manifest sync might have failed.${NC}"
     echo -e "${BLUE}[INFO] Current device/ directory contents:${NC}"
     ls -R device/ | grep ":$" || echo "device/ is empty"
     exit 1
 fi
-breakfast a26x
+
+# Check if Lineage-specific commands exist
+if ! type breakfast >/dev/null 2>&1; then
+    echo -e "${RED}[ERROR] 'breakfast' command not found even after sourcing envsetup.sh.${NC}"
+    echo -e "${BLUE}[INFO] Falling back to manual lunch if possible...${NC}"
+    lunch lineage_a26x-bp4a-userdebug || { echo -e "${RED}[ERROR] lunch failed as well.${NC}"; exit 1; }
+else
+    echo -e "${BLUE}[INFO] 'breakfast' found, initializing a26x...${NC}"
+    breakfast a26x
+fi
 
 echo -e "${BLUE}[4/4] Starting compilation...${NC}"
 # Prevent historical broken vendor symlinks from crashing the build
