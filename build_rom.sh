@@ -38,12 +38,10 @@ fi
 echo -e "${BLUE}[INFO] Cloning a26x local manifests...${NC}"
 git clone https://github.com/os-guy-original/LineageOS-a26 --depth 1 -b lineage-23.2 .repo/local_manifests
 
-# Use Crave's resync script if available, otherwise fallback to repo sync
-if [ -x "/opt/crave/resync.sh" ]; then
-    /opt/crave/resync.sh
-else
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-fi
+# Force full repo sync to ensure ALL repositories including vendor/lineage are synced
+# Crave's resync.sh does NOT sync vendor/lineage, so we must use repo sync directly
+echo -e "${BLUE}[INFO] Syncing all repositories (this may take a while)...${NC}"
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 echo -e "${BLUE}[2/4] Setting up build environment...${NC}"
 if [ ! -f "build/envsetup.sh" ]; then
@@ -51,8 +49,15 @@ if [ ! -f "build/envsetup.sh" ]; then
     exit 1
 fi
 
-# Explicitly use bash to source
+# Source build environment
 source build/envsetup.sh || { echo -e "${RED}[ERROR] Failed to source build/envsetup.sh${NC}"; exit 1; }
+
+# Verify vendor/lineage exists (contains LineageOS-specific build functions)
+if [ ! -d "vendor/lineage" ]; then
+    echo -e "${RED}[ERROR] vendor/lineage not found! LineageOS core is missing.${NC}"
+    echo -e "${BLUE}[INFO] This usually means repo sync didn't complete properly.${NC}"
+    exit 1
+fi
 
 echo -e "${BLUE}[3/4] Initializing device configuration...${NC}"
 
