@@ -70,15 +70,9 @@ if [ ! -f "device/samsung/a26x/AndroidProducts.mk" ]; then
     exit 1
 fi
 
-# Check if Lineage-specific commands exist
-if ! type breakfast >/dev/null 2>&1; then
-    echo -e "${RED}[ERROR] 'breakfast' command not found even after sourcing envsetup.sh.${NC}"
-    echo -e "${BLUE}[INFO] Falling back to manual lunch...${NC}"
-    lunch lineage_a26x-userdebug || { echo -e "${RED}[ERROR] lunch failed as well.${NC}"; exit 1; }
-else
-    echo -e "${BLUE}[INFO] 'breakfast' found, initializing a26x...${NC}"
-    breakfast a26x
-fi
+# Use breakfast command (LineageOS 23 standard)
+echo -e "${BLUE}[INFO] Running breakfast for a26x...${NC}"
+breakfast a26x userdebug || { echo -e "${RED}[ERROR] breakfast failed.${NC}"; exit 1; }
 
 echo -e "${BLUE}[4/4] Starting compilation...${NC}"
 # Prevent historical broken vendor symlinks from crashing the build
