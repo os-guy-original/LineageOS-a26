@@ -68,11 +68,17 @@ if [ ! -d "device/samsung/a26x" ]; then
     exit 1
 fi
 
+# Verify AndroidProducts.mk exists
+if [ ! -f "device/samsung/a26x/AndroidProducts.mk" ]; then
+    echo -e "${RED}[ERROR] device/samsung/a26x/AndroidProducts.mk not found!${NC}"
+    exit 1
+fi
+
 # Check if Lineage-specific commands exist
 if ! type breakfast >/dev/null 2>&1; then
     echo -e "${RED}[ERROR] 'breakfast' command not found even after sourcing envsetup.sh.${NC}"
-    echo -e "${BLUE}[INFO] Falling back to manual lunch if possible...${NC}"
-    lunch lineage_a26x-bp4a-userdebug || { echo -e "${RED}[ERROR] lunch failed as well.${NC}"; exit 1; }
+    echo -e "${BLUE}[INFO] Falling back to manual lunch...${NC}"
+    lunch lineage_a26x-userdebug || { echo -e "${RED}[ERROR] lunch failed as well.${NC}"; exit 1; }
 else
     echo -e "${BLUE}[INFO] 'breakfast' found, initializing a26x...${NC}"
     breakfast a26x
