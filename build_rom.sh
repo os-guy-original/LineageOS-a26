@@ -28,18 +28,15 @@ echo -e "${BLUE}[1/4] Initializing and Syncing Repositories...${NC}"
 # Remove old local manifests to avoid conflicts (Crave best practice)
 rm -rf .repo/local_manifests
 
-# Initialize repo if not already done
-if [ ! -d ".repo" ]; then
-    echo -e "${BLUE}[INFO] .repo not found, performing full initialization...${NC}"
-    repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
-fi
+# ALWAYS reinitialize to LineageOS (Crave may initialize with AOSP base)
+echo -e "${BLUE}[INFO] Initializing LineageOS 23.2 repository...${NC}"
+repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
 
 # Clone fresh local manifests for device trees
 echo -e "${BLUE}[INFO] Cloning a26x local manifests...${NC}"
 git clone https://github.com/os-guy-original/LineageOS-a26 --depth 1 -b lineage-23.2 .repo/local_manifests
 
 # Force full repo sync to ensure ALL repositories including vendor/lineage are synced
-# Crave's resync.sh does NOT sync vendor/lineage, so we must use repo sync directly
 echo -e "${BLUE}[INFO] Syncing all repositories (this may take a while)...${NC}"
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
