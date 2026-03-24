@@ -34,12 +34,8 @@ if [ ! -d ".repo" ]; then
     curl -o .repo/local_manifests/a26x.xml https://raw.githubusercontent.com/os-guy-original/LineageOS-a26/refs/heads/lineage-23.2/a26x.xml
 fi
 
-# Use Crave's fast sync if available, otherwise fallback to repo sync
-if [ -x "/opt/crave/resync.sh" ]; then
-    /opt/crave/resync.sh
-else
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-fi
+# Always use full repo sync to ensure vendor/lineage and all core repos are synced
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 echo -e "${BLUE}[2/4] Setting up build environment...${NC}"
 if [ ! -f "build/envsetup.sh" ]; then
@@ -49,14 +45,6 @@ fi
 
 # Explicitly use bash to source
 source build/envsetup.sh || { echo -e "${RED}[ERROR] Failed to source build/envsetup.sh${NC}"; exit 1; }
-
-# Debug: Check if Lineage core is present
-if [ ! -d "vendor/lineage" ]; then
-    echo -e "${RED}[ERROR] vendor/lineage not found! Core Lineage repositories are missing.${NC}"
-    echo -e "${BLUE}[INFO] Current vendor/ directory contents:${NC}"
-    ls -d vendor/*/ || echo "vendor/ is empty or missing subdirectories"
-    exit 1
-fi
 
 echo -e "${BLUE}[3/4] Initializing device configuration...${NC}"
 
