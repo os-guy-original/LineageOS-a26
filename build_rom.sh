@@ -24,18 +24,26 @@ echo -e "${GREEN} Maintainer: OpenSource Guy${NC}"
 echo -e "${BLUE}==========================================================${NC}"
 
 echo -e "${BLUE}[1/4] Initializing and Syncing Repositories...${NC}"
+
+# Remove old local manifests to avoid conflicts (Crave best practice)
+rm -rf .repo/local_manifests
+
+# Initialize repo if not already done
 if [ ! -d ".repo" ]; then
     echo -e "${BLUE}[INFO] .repo not found, performing full initialization...${NC}"
     repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
-    
-    # We clone the manifest here so repo sync will pull the device trees
-    echo -e "${BLUE}[INFO] Cloning a26x local manifests...${NC}"
-    mkdir -p .repo/local_manifests
-    curl -o .repo/local_manifests/a26x.xml https://raw.githubusercontent.com/os-guy-original/LineageOS-a26/refs/heads/lineage-23.2/a26x.xml
 fi
 
-# Always use full repo sync to ensure vendor/lineage and all core repos are synced
-repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+# Clone fresh local manifests for device trees
+echo -e "${BLUE}[INFO] Cloning a26x local manifests...${NC}"
+git clone https://github.com/os-guy-original/LineageOS-a26 --depth 1 -b lineage-23.2 .repo/local_manifests
+
+# Use Crave's resync script if available, otherwise fallback to repo sync
+if [ -x "/opt/crave/resync.sh" ]; then
+    /opt/crave/resync.sh
+else
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+fi
 
 echo -e "${BLUE}[2/4] Setting up build environment...${NC}"
 if [ ! -f "build/envsetup.sh" ]; then
