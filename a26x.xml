@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <!--
-    Device Manifest for Samsung Galaxy A26 (SM-A266B)
+    Device Manifest for Samsung Galaxy A26 5G (SM-A266B)
     Codename: a26x
-    Platform: Exynos S5E8835
+    Platform: Exynos S5E8835 (erd8835)
+    LineageOS: 23.2 (Android 16)
   -->
 
   <!-- Remotes -->
@@ -24,7 +25,7 @@
            revision="lineage-23.2"
            depth="1" />
 
-  <!-- Hardware -->
+  <!-- Hardware Samsung -->
   <project path="hardware/samsung"
            name="android_hardware_samsung"
            remote="lineageos"
